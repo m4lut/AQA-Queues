@@ -1,1 +1,58 @@
+Module Module1
 
+    Sub Main()
+        Dim Queue(10) As Integer
+        Dim Choice As String
+        Dim Input As Integer
+        Dim QueueSize As Integer = 0
+        Dim FrontPointer As Integer = 0
+        Dim RearPointer As Integer = 0
+        While 1 = 1
+            Console.WriteLine("Enqueue or dequeue?(e/d)")
+            Choice = Console.ReadLine()
+            If Choice = "e" Then
+                Console.WriteLine("Enter a number to enqueue: ")
+                Input = Console.ReadLine()
+                Enqueue(Queue, QueueSize, RearPointer, Input)
+            ElseIf Choice = "d" Then
+                Dequeue(Queue, QueueSize, FrontPointer)
+            End If
+        End While
+    End Sub
+
+    Sub Enqueue(ByRef q, ByRef qs, ByRef rp, ByRef i)
+        If qs = q.length Then
+            Console.WriteLine("Queue full!")
+            Return
+        Else
+            If rp = q.length Then
+                rp = 0
+                qs += 1
+                q(rp) = i
+            Else
+                rp += 1
+                qs += 1
+                q(rp) = i
+
+            End If
+
+        End If
+    End Sub
+
+    Sub Dequeue(ByRef q, ByRef qs, ByRef fp)
+        If qs = 0 Then
+            Console.WriteLine("Queue empty!")
+            Return
+        Else
+            q(fp) = Nothing
+            If fp = q.length Then
+                fp = 0
+                qs -= 1
+            Else
+                fp += 1
+                qs -= 1
+            End If
+        End If
+    End Sub
+
+End Module
